@@ -3,60 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Impede que o TikTok ou o destino final rastreiem a origem completa -->
     <meta name="referrer" content="no-referrer">
-    <title>Carregando...</title>
+    <title>Verificação de Segurança</title>
     <style>
-        body {
-            background-color: #121212;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
+        body { 
+            background-color: #121212; 
+            color: #ffffff; 
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
         }
-        .loader {
-            text-align: center;
+        .container { 
+            text-align: center; 
+            padding: 20px;
         }
-        .spinner {
-            border: 4px solid rgba(255,255,255,0.1);
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            border-left-color: #0088cc;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 15px auto;
+        .btn-verificar {
+            background-color: #0088cc;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,136,204,0.4);
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .btn-verificar:active {
+            transform: scale(0.98);
+        }
     </style>
-    <script>
-        window.onload = function() {
-            // Pega o código hash da URL (?id=...)
-            const urlParams = new URLSearchParams(window.location.search);
-            const encodedHash = urlParams.get('id');
-
-            if (encodedHash) {
-                try {
-                    // Decodifica o link original direto no celular do usuário
-                    const finalUrl = atob(encodedHash);
-                    
-                    // Executa o redirecionamento imediato
-                    window.location.replace(finalUrl);
-                } catch (e) {
-                    document.getElementById('msg').innerText = "Erro ao carregar o link.";
-                }
-            } else {
-                document.getElementById('msg').innerText = "Link inválido ou expirado.";
-            }
-        };
-    </script>
 </head>
 <body>
-    <div class="loader">
-        <div class="spinner"></div>
-        <p id="msg">Acessando o conteúdo VIP de forma segura...</p>
+    <div class="container">
+        <h2>Verificação de Segurança</h2>
+        <p>Clique no botão abaixo para acessar o seu conteúdo VIP de forma segura.</p>
+        <a href="https://t.me/Allyccinha_bot" target="_blank" rel="noopener noreferrer" class="btn-verificar">
+            
+            CLIQUE PARA ENTRAR NO VIP
+        </a>
     </div>
 </body>
 </html>
