@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Impede que o TikTok ou o destino final rastreiem a origem completa -->
+    <meta name="referrer" content="no-referrer">
+    <title>Carregando...</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .loader {
+            text-align: center;
+        }
+        .spinner {
+            border: 4px solid rgba(255,255,255,0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #0088cc;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px auto;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+    <script>
+        window.onload = function() {
+            // Pega o código hash da URL (?id=...)
+            const urlParams = new URLSearchParams(window.location.search);
+            const encodedHash = urlParams.get('id');
+
+            if (encodedHash) {
+                try {
+                    // Decodifica o link original direto no celular do usuário
+                    const finalUrl = atob(encodedHash);
+                    
+                    // Executa o redirecionamento imediato
+                    window.location.replace(finalUrl);
+                } catch (e) {
+                    document.getElementById('msg').innerText = "Erro ao carregar o link.";
+                }
+            } else {
+                document.getElementById('msg').innerText = "Link inválido ou expirado.";
+            }
+        };
+    </script>
+</head>
+<body>
+    <div class="loader">
+        <div class="spinner"></div>
+        <p id="msg">Acessando o conteúdo VIP de forma segura...</p>
+    </div>
+</body>
+</html>
